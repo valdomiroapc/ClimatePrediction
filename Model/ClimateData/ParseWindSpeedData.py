@@ -26,5 +26,13 @@ for path in glob.glob(directory + "\*.csv"):
 		updated_df = updated_df.rename(columns= {'Anemômetro;wind_speed;Count ()':'Anemômetro;wind_speed;Count'})
 	wind_speed_data = pd.concat([wind_speed_data,updated_df])
 
-print(wind_speed_data)
-wind_speed_data.to_csv('Itumbiara_wind_speed_data.csv',sep=',',index=False)
+wind_speed_data = wind_speed_data.rename(columns={
+	'Anemômetro;wind_speed;Max': 'max',
+	'Anemômetro;wind_speed;Avg': 'avg',
+	'Anemômetro;wind_speed;Min': 'min',
+	'Anemômetro;wind_speed;StdDev': 'stddev',
+	'Anemômetro;wind_speed;Count': 'count'
+})
+
+wind_speed_data.to_csv(r'C:\Users\vneto\Desktop\Personal files\Climate_prediction\valdomiroapc\ClimatePrediction\Model\ClimateData\Itumbiara_parsed_data\Itumbiara_wind_speed_data.csv',sep=',',index=False)
+print('wind speed data parsed and saved')

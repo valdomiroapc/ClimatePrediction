@@ -21,6 +21,15 @@ for path in glob.glob(directory + "\*.csv"):
 	if 'Piranômetro - 2;precipitation;Count ()' in updated_df.columns:
 		updated_df = updated_df.rename(columns= {'Piranômetro - 2;precipitation;Count ()':'Piranômetro - 2;precipitation;Count'})
 	precipitation_data = pd.concat([precipitation_data,updated_df])
-	
-print(precipitation_data)
-precipitation_data.to_csv('Itumbiara_precipitation.csv',sep=',',index=False)
+
+precipitation_data = precipitation_data.rename(columns= 
+											   {
+												   'Pluviômetro;precipitation;Count': 'count',
+												   'Pluviômetro;precipitation;Sum': 'sum',
+												   'Piranômetro - 2;precipitation;Max': 'max',
+												   'Piranômetro - 2;precipitation;StdDev': 'stddev',
+												   'Piranômetro - 2;precipitation;Count': 'count'
+												   })
+
+precipitation_data.to_csv(r'C:\Users\vneto\Desktop\Personal files\Climate_prediction\valdomiroapc\ClimatePrediction\Model\ClimateData\Itumbiara_parsed_data\Itumbiara_precipitation_data.csv',sep=',',index=False)
+print('precipitation data parsed and saved')

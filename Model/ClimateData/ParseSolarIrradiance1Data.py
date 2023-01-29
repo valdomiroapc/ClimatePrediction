@@ -22,7 +22,15 @@ for path in glob.glob(directory + "\*.csv"):
 		updated_df = updated_df.rename(columns= {'Piranômetro - 1;solar_irradiance;Count ()':'Piranômetro - 1;solar_irradiance;Count'})
 	solar_irradiance1 = pd.concat([solar_irradiance1,updated_df])
 	
+solar_irradiance1 = solar_irradiance1.rename(columns= 
+											 {
+												 'Piranômetro - 1;solar_irradiance;Avg': 'avg',
+												 'Piranômetro - 1;solar_irradiance;Min': 'min',
+												 'Piranômetro - 1;solar_irradiance;Max': 'max',
+												 'Piranômetro - 1;solar_irradiance;StdDev': 'stddev',
+												 'Piranômetro - 1;solar_irradiance;Count': 'count'
+												 })
 
-print(solar_irradiance1)
-solar_irradiance1.to_csv('Itumbiara_solar_irradiance1.csv',sep=',',index=False)
+solar_irradiance1.to_csv(r'C:\Users\vneto\Desktop\Personal files\Climate_prediction\valdomiroapc\ClimatePrediction\Model\ClimateData\Itumbiara_parsed_data\Itumbiara_solar_irradiance_1_data.csv',sep=',',index=False)
+print('instrument 1 solar irradiance data parsed and saved')
 

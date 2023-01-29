@@ -22,7 +22,14 @@ for path in glob.glob(directory + "\*.csv"):
 		updated_df = updated_df.rename(columns= {'Temperatura / Umidade;temperature;Count ()':'Temperatura / Umidade;temperature;Count'})
 	temperature_data = pd.concat([temperature_data,updated_df])
 	
-
-print(temperature_data)
-temperature_data.to_csv('Itumbiara_temperature_data.csv',sep=',',index=False)
+temperature_data = temperature_data.rename(columns = 
+										   {
+												'Temperatura / Umidade;temperature;Avg': 'avg',
+												'Temperatura / Umidade;temperature;Min': 'min',
+												'Temperatura / Umidade;temperature;Max': 'max',
+												'Temperatura / Umidade;temperature;StdDev': 'stddev',
+												'Temperatura / Umidade;temperature;Count': 'count'
+											})
+temperature_data.to_csv(r'C:\Users\vneto\Desktop\Personal files\Climate_prediction\valdomiroapc\ClimatePrediction\Model\ClimateData\Itumbiara_parsed_data\Itumbiara_temperature_data.csv',sep=',',index=False)
+print('temperature data parsed and saved')
 
