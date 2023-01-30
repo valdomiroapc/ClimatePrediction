@@ -1,8 +1,11 @@
 # -*- coding: latin-1 -*-
 import pandas as pd
 import glob
+import yaml
+with open(r'C:\Users\vneto\Desktop\Personal files\Climate_prediction\valdomiroapc\ClimatePrediction\Configuration\Configfile.yaml') as configFile:
+	config = yaml.load(configFile, Loader=yaml.FullLoader)
 
-directory = r"C:\Users\vneto\Desktop\Personal files\Climate_prediction\valdomiroapc\ClimatePrediction\Model\ClimateData\PCD_Itumbiara"
+directory = config['SourceDataPath']
 solar_irradiance1 = pd.DataFrame()
 for path in glob.glob(directory + "\*.csv"):
 	currentDF = pd.read_csv(path,encoding='utf-8', low_memory=False)
@@ -30,7 +33,7 @@ solar_irradiance1 = solar_irradiance1.rename(columns=
 												 'Piranômetro - 1;solar_irradiance;StdDev': 'stddev',
 												 'Piranômetro - 1;solar_irradiance;Count': 'count'
 												 })
-
-solar_irradiance1.to_csv(r'C:\Users\vneto\Desktop\Personal files\Climate_prediction\valdomiroapc\ClimatePrediction\Model\ClimateData\Itumbiara_parsed_data\Itumbiara_solar_irradiance_1_data.csv',sep=',',index=False)
+savePath = config['ParsedDataPath'] + r'\solar_irradiance_1_data.csv'
+solar_irradiance1.to_csv(savePath,sep=',',index=False)
 print('instrument 1 solar irradiance data parsed and saved')
 

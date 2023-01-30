@@ -6,7 +6,13 @@ from tkinter import CURRENT
 import pandas as pd
 import glob
 
-directory = r"C:\Users\vneto\Desktop\Personal files\Climate_prediction\valdomiroapc\ClimatePrediction\Model\ClimateData\PCD_Itumbiara"
+import yaml
+
+with open(r'C:\Users\vneto\Desktop\Personal files\Climate_prediction\valdomiroapc\ClimatePrediction\Configuration\Configfile.yaml') as configFile:
+	config = yaml.load(configFile, Loader=yaml.FullLoader)
+
+directory = config['SourceDataPath']
+
 wind_speed_data = pd.DataFrame()
 for path in glob.glob(directory + "\*.csv"):
 	currentDF = pd.read_csv(path,encoding='utf-8', low_memory=False)
@@ -33,6 +39,6 @@ wind_speed_data = wind_speed_data.rename(columns={
 	'Anemômetro;wind_speed;StdDev': 'stddev',
 	'Anemômetro;wind_speed;Count': 'count'
 })
-
-wind_speed_data.to_csv(r'C:\Users\vneto\Desktop\Personal files\Climate_prediction\valdomiroapc\ClimatePrediction\Model\ClimateData\Itumbiara_parsed_data\Itumbiara_wind_speed_data.csv',sep=',',index=False)
+savePath = config['ParsedDataPath'] + r'\wind_speed_data.csv'
+wind_speed_data.to_csv(savePath,sep=',',index=False)
 print('wind speed data parsed and saved')

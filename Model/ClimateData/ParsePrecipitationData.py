@@ -1,8 +1,13 @@
 # -*- coding: latin-1 -*-
 import pandas as pd
 import glob
+import yaml
 
-directory = r"C:\Users\vneto\Desktop\Personal files\Climate_prediction\valdomiroapc\ClimatePrediction\Model\ClimateData\PCD_Itumbiara"
+with open(r'C:\Users\vneto\Desktop\Personal files\Climate_prediction\valdomiroapc\ClimatePrediction\Configuration\Configfile.yaml') as configFile:
+	config = yaml.load(configFile, Loader=yaml.FullLoader)
+
+directory = config['SourceDataPath']
+
 precipitation_data = pd.DataFrame()
 for path in glob.glob(directory + "\*.csv"):
 	currentDF = pd.read_csv(path,encoding='utf-8', low_memory=False)
@@ -30,6 +35,6 @@ precipitation_data = precipitation_data.rename(columns=
 												   'Piranômetro - 2;precipitation;StdDev': 'stddev',
 												   'Piranômetro - 2;precipitation;Count': 'count'
 												   })
-
-precipitation_data.to_csv(r'C:\Users\vneto\Desktop\Personal files\Climate_prediction\valdomiroapc\ClimatePrediction\Model\ClimateData\Itumbiara_parsed_data\Itumbiara_precipitation_data.csv',sep=',',index=False)
+savePath = config['ParsedDataPath'] + r'\precipitation.csv'
+precipitation_data.to_csv(savePath,sep=',',index=False)
 print('precipitation data parsed and saved')

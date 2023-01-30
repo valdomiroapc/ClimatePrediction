@@ -1,0 +1,13 @@
+ParsedDataPath: C:\\Users\\vneto\\Desktop\\Personal files\\Climate_prediction\\valdomiroapc\\ClimatePrediction\\Model\\ClimateData\\ParsedData
+
+SourceDataPath: C:\\Users\\vneto\\Desktop\\Personal files\\Climate_prediction\\valdomiroapc\\ClimatePrediction\\Model\\ClimateData\\PCD_Itumbiara
+
+ProcessedDataPath: C:\\Users\\vneto\\Desktop\\Personal files\\Climate_prediction\\valdomiroapc\\ClimatePrediction\\Model\\ClimateData\\ProcessedData
+
+ProcessedVariablesDataPath:
+ Temperature: C:\\Users\\vneto\\Desktop\\Personal files\\Climate_prediction\\valdomiroapc\\ClimatePrediction\\Model\\ClimateData\\ProcessedData\\temperature.csv
+ Humidity: C:\\Users\\vneto\\Desktop\\Personal files\\Climate_prediction\\valdomiroapc\\ClimatePrediction\\Model\\ClimateData\\ProcessedData\\humidity.csv
+ SolarIrradiance1: C:\\Users\\vneto\\Desktop\\Personal files\\Climate_prediction\\valdomiroapc\\ClimatePrediction\\Model\\ClimateData\\ProcessedData\\solar_irradiance_1.csv
+ SolarIrradiance2: C:\\Users\\vneto\\Desktop\\Personal files\\Climate_prediction\\valdomiroapc\\ClimatePrediction\\Model\\ClimateData\\ProcessedData\\solar_irradiance_2.csv
+ Precipitation: C:\\Users\\vneto\\Desktop\\Personal files\\Climate_prediction\\valdomiroapc\\ClimatePrediction\\Model\\ClimateData\\ProcessedData\\precipitation.csv
+ WindSpeed: C:\\Users\\vneto\\Desktop\\Personal files\\Climate_prediction\\valdomiroapc\\ClimatePrediction\\Model\\ClimateData\\ProcessedData\\wind_speed.csv 

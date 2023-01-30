@@ -1,8 +1,12 @@
 # -*- coding: latin-1 -*-
 import pandas as pd
 import glob
+import yaml
 
-directory = r"C:\Users\vneto\Desktop\Personal files\Climate_prediction\valdomiroapc\ClimatePrediction\Model\ClimateData\PCD_Itumbiara"
+with open(r'C:\Users\vneto\Desktop\Personal files\Climate_prediction\valdomiroapc\ClimatePrediction\Configuration\Configfile.yaml') as configFile:
+	config = yaml.load(configFile, Loader=yaml.FullLoader)
+
+directory = config['SourceDataPath']
 temperature_data = pd.DataFrame()
 for path in glob.glob(directory + "\*.csv"):
 	currentDF = pd.read_csv(path,encoding='utf-8', low_memory=False)
@@ -30,6 +34,7 @@ temperature_data = temperature_data.rename(columns =
 												'Temperatura / Umidade;temperature;StdDev': 'stddev',
 												'Temperatura / Umidade;temperature;Count': 'count'
 											})
-temperature_data.to_csv(r'C:\Users\vneto\Desktop\Personal files\Climate_prediction\valdomiroapc\ClimatePrediction\Model\ClimateData\Itumbiara_parsed_data\Itumbiara_temperature_data.csv',sep=',',index=False)
-print('temperature data parsed and saved')
 
+savePath = config['ParsedDataPath'] + r'\temperature_data.csv'
+temperature_data.to_csv(savePath,sep=',',index=False)
+print('temperature data parsed and saved')
