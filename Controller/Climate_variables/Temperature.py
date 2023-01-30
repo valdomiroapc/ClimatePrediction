@@ -3,9 +3,14 @@ import yaml
 from Climate_Variable import ClimateVariable
 
 class Temperature(ClimateVariable):
-    pass
+    def selfCorrelation(self):
+        series = pd.Series(self._Data['avg'])
+        correlation = []
+        for i in range(1,1000):
+            correlation.append(series.autocorr(lag=i))
+        return correlation
 
 obj = Temperature()
 obj.loadData()
-print(obj.getData())
+print(obj.selfCorrelation())
         
